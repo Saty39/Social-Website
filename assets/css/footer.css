@@ -1,0 +1,11 @@
+#footing {
+  background-color: blueviolet;
+  color: #c6cab1;
+  display: flex;
+  font-weight: 600;
+  font-size: large;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly; }
+  #footing a {
+    text-decoration: none; }

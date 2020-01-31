@@ -2,7 +2,7 @@ const express=require('express');
 const cookieParser=require('cookie-parser');
 const app=express();
 
-const port=3000;
+const port=1500;
 
 const expessLayouts= require('express-ejs-layouts');
 
@@ -13,11 +13,23 @@ const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-stratedgy');
 
+
+
 const MongoStore= require('connect-mongo')(session);
+const sassMiddleware=require('node-sass-middleware');
+
+app.use(sassMiddleware({
+        src:'./assets/scss',
+        dest:'./assets/css',
+        debug: true,
+        outputStyle: 'extended',
+        prefix: '/css'
+
+}));
 
 
 //reading through the post requests
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
@@ -61,6 +73,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
+
 
 //accesing route middleware
 app.use('/',require('./routes'));
