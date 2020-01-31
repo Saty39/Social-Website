@@ -1,4 +1,26 @@
 
         <h1>Codeial/Router</h1>
 
-     
+     <section id="feed-posts">
+             <h3>Posts</h3>
+             <form action="/posts/create" id="next-post-form" method="post">
+                     <textarea name="content"  cols="30" rows="5" placeholder="Type in here.."></textarea>
+                     <input type="submit" value="Post">
+             </form>
+
+             <div id="posts-lists-container">
+                     <ul>
+                             <% for(post of posts){ %>
+                                <li>
+                                       <h2><%= post.content %></h2>
+                                       <br>
+                                       <small>
+                                           <%= post.user.name %> 
+                                       </small>
+
+                                </li>
+                            <% } %>
+                     </ul>
+
+             </div>
+     </section>

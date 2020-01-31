@@ -8,7 +8,13 @@
    flex-wrap: wrap;
    justify-content: space-evenly;
 
-    a{
-        text-decoration: none;
-    }
+      
+        a{
+            padding-right: .8em;
+            text-decoration: none;
+            color:rgb(240, 227, 227);
+            font-size: large;
+            margin-top: 10%;
+        }
+    
 }

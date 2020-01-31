@@ -2,14 +2,27 @@
       background-color: blueviolet;
       font-family: 'Abril Fatface', cursive;
       font-weight: 300;
-     color:rgb(198, 202, 177);
+     color:rgb(241, 231, 231);
      display: flex;
      flex-direction: row;
      flex-wrap: wrap;
      justify-content: space-between;
 
      h2{
-         text-align: center;
+         text-align: center;        
      }
+     .navbars{
+        margin-top: 10%;
+        
+        a{
+            padding-right: .8em;
+            text-decoration: none;
+            color:rgb(240, 227, 227);
+            font-size: large;
+          
+        }
+
+     }
+
 }
 
