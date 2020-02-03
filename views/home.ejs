@@ -14,42 +14,11 @@
 
              <div id="posts-lists-container">
                      <ul>
-                             <% for(post of posts){ %>
-                                <li>
-                                        <p>
-                                                <h2><%= post.content %></h2>
-                                                <br>
-                                                <small>
-                                                    <%= post.user.name %> 
-                                                </small>
-                                        </p>
-                                       <div class="post-comments">
-                                          <% if(locals.user){ %>  
-                                                <form action="/comments/create" method="post">
-                                                <input type="text" name="content" placeholder="Comment Here.." required>
-                                                <input type="hidden" name="post" value="<%= post._id %>">
-                                                <input type="submit" value="Add Comment">
-                                                </form>
-                                           <% } %>    
-                                           
-                                           <div class="post-comment-lists">
-                                                    <ul id="post-comments-<%= post._id %>">
-                                                        <% for(comment of post.comments){ %>     
-                                                        <p>
-                                                                <h2><%= comment.content %></h2>
-                                                                <br>
-                                                                <small>
-                                                                    <%= comment.user.name %> 
-                                                                </small>
-                                                        </p>
-                                                        <% } %>
-                                                    </ul>
-                                           </div>
+                         <% for(post of posts){ %>
+                          
+                                <%- include('_post') -%>
 
-                                       </div>
-
-                                </li>
-                            <% } %>
+                        <% } %>
                      </ul>
 
              </div>
