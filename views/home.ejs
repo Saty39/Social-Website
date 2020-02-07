@@ -1,25 +1,44 @@
 
-        <h1>Codeial/Router</h1>
+      <link rel="stylesheet" href="/css/home.css">
 
-     <section id="feed-posts">
-             <h3>Posts</h3>
+ <div id="home-container">
+            
+      <section id="feed-posts">
+        <h3>Posts</h3>
 
-             <!-- only user can post -->
-             <% if(locals.user){ %>
-             <form action="/posts/create" id="next-post-form" method="post">
-                     <textarea name="content"  cols="30" rows="5" placeholder="Type in here.." required></textarea>
-                     <input type="submit" value="Post">
-             </form>
-             <% } %>
+        <!-- only user can post -->
+        <% if(locals.user){ %>
+        <form action="/posts/create" id="next-post-form" method="post">
+                <textarea name="content"  cols="30" rows="5" placeholder="Type in here.." required></textarea>
+                <input type="submit" value="Post">
+        </form>
+        <% } %>
 
-             <div id="posts-lists-container">
-                     <ul>
-                         <% for(post of posts){ %>
-                          
-                                <%- include('_post') -%>
+        <div id="posts-lists-container">
+                <ul>
+                    <% for(post of posts){ %>
+                     
+                           <%- include('_post') -%>
 
-                        <% } %>
-                     </ul>
+                    <% } %>
+                </ul>
 
-             </div>
-     </section>
+        </div>
+        </section>
+
+        <section id="user-friends">
+                <h3>Friends</h3>
+                <% for(u of all_users){ %>
+                             
+                  <p>
+                          <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                  </p>
+   
+               <% } %>
+   
+        </section>
+ </div>
+
+
+
+  

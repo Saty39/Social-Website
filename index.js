@@ -2,7 +2,7 @@ const express=require('express');
 const cookieParser=require('cookie-parser');
 const app=express();
 
-const port=4500;
+const port=3300;
 
 const expessLayouts= require('express-ejs-layouts');
 
