@@ -1,9 +1,9 @@
 const mongoose=require('mongoose');
 
-
+//given in documentation
 mongoose.connect('mongodb://localhost/codeial_development',{ useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true});
 
-
+//checking for connection
 const db=mongoose.connection;
 
 

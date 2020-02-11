@@ -1,10 +1,12 @@
 
+//REQUIRED THE user SCHEMA in USER
 const User=require('../models/user');
 
 
-
+//defined the actions for profile
 module.exports.profile=function(req,res){
 
+    //using the id in url ,id isfound in db and then rendered to user_profile.ejs
     User.findById(req.params.id,function(err,user){
 
     return res.render('user_profile',{
@@ -14,7 +16,9 @@ module.exports.profile=function(req,res){
   })
 }
 
+//defined the actions for update
 module.exports.update=function(req,res){
+    //if the id in params is same as the user id,perform updation using mongose and rediret back
       if(req.user.id ==req.params.id){
           User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
               return res.redirect('back');
@@ -27,38 +31,42 @@ module.exports.update=function(req,res){
 }
 
 
-//render the sign up page
+//defined the actions for sign up which is later accessed in routes
 module.exports.signUp=function(req,res){
 
+      //if user is authenticated go to profile page
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
     }
 
+    //else render the sign-up page
     return res.render('user_sign_up',{
         title:"Codeial | Sign Up"
     })
 }
 
-//render the sign in page
+//defined the actions for sign in ,which is later accessed in routes
 module.exports.signIn=function(req,res){
 
+    //if user is authenticated go to profile page
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
     }
 
+    //else render the sign-in page
     return res.render('user_sign_in',{
         title:"Codeial | Sign In"
     })
 }
 
-//get the sign up data
+//define actions for create,which is later accessed in routes
 module.exports.create =function(req,res){
+
    if(req.body.password!=req.body.confirm_password)
    {
        return res.redirect('back');
    }
-    
-
+    //using email to find validation of user
    User.findOne({email: req.body.email},function(err,user){
        if(err){
            console.log('error in finding user in signing up'); 
@@ -82,14 +90,14 @@ module.exports.create =function(req,res){
    })
 }
 
-//sign in and create a session for the user
 module.exports.createSession =function(req,res){
+    req.flash('success','Logged in Succesfully');
    res.redirect('/');
 }
 
 module.exports.destroySession = function(req,res){
 
     req.logout();
-
+    req.flash('success','Logged OuT');
    return res.redirect('/');
  }
