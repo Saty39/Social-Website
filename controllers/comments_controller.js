@@ -4,6 +4,8 @@ const Post= require('../models/post');
 module.exports.create=async function(req,res){
   
     try{
+
+        //check if the id of Post passed belongs to a post,if not ,error is thrown(eg.->if any users tries to change through html,it will throw error)
         let post = await Post.findById(req.body.post);
 
         if (post){

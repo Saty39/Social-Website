@@ -1,20 +1,21 @@
 
-      <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/home.css">
 
  <div id="home-container">
             
       <section id="feed-posts">
+              
         <h3>Posts</h3>
 
         <!-- only user can post -->
         <% if(locals.user){ %>
-        <form action="/posts/create" id="next-post-form" method="post">
+        <form action="/posts/create" id="new-post-form"         method="post">
                 <textarea name="content"  cols="30" rows="5" placeholder="Type in here.." required></textarea>
                 <input type="submit" value="Post">
         </form>
         <% } %>
 
-        //all the posts would be Displayed
+        <!-- //all the posts would be Displayed -->
         <div id="posts-lists-container">
                 <ul>
                     <% for(post of posts){ %>
@@ -25,7 +26,7 @@
                 </ul>
 
         </div>
-        </section>
+      </section>
 
         <section id="user-friends">
                 <h3>Friends</h3>
@@ -41,5 +42,8 @@
  </div>
 
 
+<!-- importing this script for creating the comments -->
+ <script src="/js/home_post_comments.js" ></script>
+<script src="/js/home_posts.js"></script>
 
   
